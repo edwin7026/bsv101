@@ -1,4 +1,4 @@
-package GCD
+package GCD;
 
     // here is the interface for the gcd module
     interface GCD;
@@ -41,6 +41,5 @@ package GCD
             return y;
         endmethod
 
-        method get
     endmodule
 endpackage : GCD
