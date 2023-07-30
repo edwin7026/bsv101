@@ -1,4 +1,7 @@
-package GCD;
+// This file describes a hardware that computes the GCD of two integers
+
+// packages are like namespaces and it is compulsory
+package gcd;
 
     // here is the interface for the gcd module
     interface GCD;
@@ -42,4 +45,4 @@ package GCD;
         endmethod
 
     endmodule
-endpackage : GCD
+endpackage : gcd
