@@ -1,6 +1,17 @@
-// This file describes a hardware that computes the GCD of two integers
+/** This file describes a hardware that computes the GCD of two integers
+ * Euclid's method is used to do this
+ * The following demonstrates an example where a and b are the inputs
+ * Iteration        a        b
+ *    0             15       6
+ *    1             9        6          // subract
+ *    2             3        6          // subtract
+ *    3             6        3          // a < b; swap
+ *    4             3        3          // subtract
+ *    5             0        3          // a == 0; b is the result
+ **/
 
 // packages are like namespaces and it is compulsory
+// package name should be same as that of file name
 package gcd;
 
     // here is the interface for the gcd module
@@ -9,6 +20,7 @@ package gcd;
         method ActionValue#(Bit#(32)) getResult;
     endinterface
 
+    (* synthesize *)
     module mkGCD(GCD);
 
         // First let's go ahead and define all the states
