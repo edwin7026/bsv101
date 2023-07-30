@@ -1,2 +1,2 @@
-# bluespec ignores
-*.bo
+# ignore builds
+/**/build/
