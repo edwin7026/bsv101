@@ -12,30 +12,29 @@
 
 // packages are like namespaces and it is compulsory
 // package name should be same as that of file name
-package gcd;
+package GCD;
 
     // here is the interface for the gcd module
-    interface GCD;
+    interface GCD_Ifc;
         method Action start(Bit#(32) a, Bit#(32) b);
         method ActionValue#(Bit#(32)) getResult;
     endinterface
 
     (* synthesize *)
-    module mkGCD(GCD);
+    module mkGCD(GCD_Ifc);
 
         // First let's go ahead and define all the states
         Reg#(Bit#(32)) x <- mkReg(0);                       // input
         Reg#(Bit#(32)) y <- mkReg(0);                       // output
         Reg#(Bool) busy_flag <- mkReg(False);               // flag to show GCD computation in process
         
-        // gcd rule will execute repeatedly until x becomes 0
+        // core computation of gcd. This happens repeatedly
         rule gcd;
-            if (x >= y) begin
-                x <= x - y;             // subtract
+            if (x < y) begin
+                x <= y; y <= x;
             end
-            else if (x != 0) begin
-                x <= y;
-                y <= x;                 // swap
+            else begin
+                x <= x - y;
             end
         endrule
 
@@ -57,4 +56,4 @@ package gcd;
         endmethod
 
     endmodule
-endpackage : gcd
+endpackage : GCD
